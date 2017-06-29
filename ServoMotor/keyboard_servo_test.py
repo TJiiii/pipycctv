@@ -25,10 +25,10 @@ try:
 			doAngle(right_angle)
 		elif var == 'L' or var == 'l' :
 			print "Left"
-			doAngle(right_angle)
+			doAngle(left_angle)
 		elif var == 'C' or var == 'c' :
 			print "Center"
-			doAngle(right_angle)
+			doAngle(center_angle)
 except KeyboardInterrupt:
 	p.stop()
 GPIO.cleanup() 
