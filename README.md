@@ -132,9 +132,9 @@ $ tar zxf 3.2.0.tar.gz
 $ cd opencv-3.2.0/
 $ mkdir build_with_contrib
 $ cd build_with_contrib/
-
+```
 cmake
-
+```
 $ cmake -D CMAKE_BUILD_TYPE=RELEASE \
 -D CMAKE_INSTALL_PREFIX=/usr/local \
 -D INSTALL_PYTHON_EXAMPLES=ON \
@@ -162,5 +162,6 @@ $ sudo make install
 참고사이트
 
 http://a244.hateblo.jp/entry/2016/12/30/235927
+
 http://webnautes.tistory.com/916
 
