@@ -1,7 +1,6 @@
 # 기초환경 설정
 
-카메라모듈 연결
-raspi-config 에서 카메라 항목 enable
+# 파이 업데이트
 
 ```
 $ sudo apt-get upgrade
@@ -10,6 +9,13 @@ $ sudo apt-get install rpi-update && sudo rpi-update
 $ sudo reboot
 ```
 
+
+# 카메라모듈 연결
+```
+$ sudo raspi-config 
+```
+에서 카메라 항목 enable
+
 ```
 $ sudo modprobe bcm2835-v4l2
 ```
@@ -17,7 +23,8 @@ $ sudo modprobe bcm2835-v4l2
 이 명령어로 /dev/video0 로 파이카메라를 인식
 
 
-opencv 3.2.0 의존성 패키지설치
+# opencv 3.2.0 의존성 패키지설치
+
 OpenCV를 컴파일하는데 사용하는 것들이 포함된 패키지들을 설치합니다. 
 
 build-essential 패키지에는 C/C++ 컴파일러와 관련 라이브러리, make 같은 도구들이 포함되어 있습니다.
@@ -39,9 +46,9 @@ $ sudo apt-get install pkg-config
 특정 포맷의 이미지 파일을 불러오거나 기록하기 위해 필요한 패키지들입니다.
 
  
-
+```
 $ sudo apt-get install libjpeg-dev libtiff5-dev libjasper-dev libpng12-dev
-
+```
 
 특정 코덱의 비디오 파일을 읽어오거나 기록하기 위해 필요한 패키지들입니다. 
 ```
@@ -61,7 +68,6 @@ GStreamer는 비디오 스트리밍을 위한 라이브러리입니다.
 $ sudo apt-get install libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev 
 ```
  
-
 
 OpenCV에서는 highgui 모듈을 사용하여 자체적으로 윈도우 생성하여 이미지나 비디오들을 보여줄 수 있습니다. 
 
@@ -142,7 +148,8 @@ $ cmake -D CMAKE_BUILD_TYPE=RELEASE \
 -D ENABLE_NEON=ON \
 -D WITH_TBB=OFF \
 -D BUILD_TBB=OFF \
--D WITH_QT=ON -D WITH_OPENGL=OFF \
+-D WITH_QT=ON \
+-D WITH_OPENGL=OFF \
 -D OPENCV_EXTRA_MODULES_PATH=../../opencv_contrib-3.2.0/modules \
 -D BUILD_opencv_freetype=OFF \
 -D BUILD_EXAMPLES=OFF ..
@@ -158,8 +165,33 @@ $ make -j4
 $ sudo make install
 ```
 
+# 서브모터 설정
 
-참고사이트
+카메라를 이리저리 돌아가게 만들 생각이기 때문에...
+라즈베리파이 3 model b 기준으로
+
+참고 : https://pinout.xyz/#
+
+서보모터의 
+주황색라인을 12번핀
+빨간색라인을 2번핀
+갈색라인을 6번핀 에 연결
+
+gpio.rpi 라이브러리 설치
+
+```
+$ sudo apt-get install python-rpi.gpio
+```
+
+설치 후
+
+import RPi.GPIO 
+만 가능하다면 제대로 작동하는것.
+ 
+ServoMotor 디렉토리의 테스트로 확인가능
+
+
+opencv 참고사이트
 
 http://a244.hateblo.jp/entry/2016/12/30/235927
 
