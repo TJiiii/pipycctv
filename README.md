@@ -1,6 +1,6 @@
 # 기초환경 설정
 
-# 파이 업데이트
+### 파이 업데이트
 
 ```
 $ sudo apt-get upgrade
@@ -10,7 +10,7 @@ $ sudo reboot
 ```
 
 
-# 카메라모듈 연결
+### 카메라모듈 연결
 ```
 $ sudo raspi-config 
 ```
@@ -23,7 +23,7 @@ $ sudo modprobe bcm2835-v4l2
 이 명령어로 /dev/video0 로 파이카메라를 인식
 
 
-# opencv 3.2.0 의존성 패키지설치
+### opencv 3.2.0 의존성 패키지설치
 
 OpenCV를 컴파일하는데 사용하는 것들이 포함된 패키지들을 설치합니다. 
 
@@ -115,7 +115,7 @@ $ sudo apt-get install python-numpy python3-numpy
 $ sudo apt-get install -y build-essential cmake pkg-config libjpeg-dev libtiff5-dev libjasper-dev libpng12-dev libavcodec-dev libavformat-dev libswscale-dev libxvidcore-dev libx264-dev libxine2-dev libv4l-dev v4l-utils libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev libqt4-dev libgtk2.0-dev libgtk-3-dev mesa-utils libgl1-mesa-dri libqt4-opengl-dev libatlas-base-dev gfortran libeigen3-dev python2.7-dev python3-dev python-numpy python3-numpy
 ```
 
-# opencv 설치
+### opencv 설치
 
 작업 디렉토리 생성 
 ```
@@ -165,9 +165,10 @@ $ make -j4
 $ sudo make install
 ```
 
-# 서브모터 설정
+### 서보모터 설정
 
 카메라를 이리저리 돌아가게 만들 생각이기 때문에...
+
 라즈베리파이 3 model b 기준으로
 
 참고 : https://pinout.xyz/#
@@ -191,7 +192,7 @@ import RPi.GPIO
 ServoMotor 디렉토리의 테스트로 확인가능
 
 
-opencv 참고사이트
+### opencv 참고사이트
 
 http://a244.hateblo.jp/entry/2016/12/30/235927
 
