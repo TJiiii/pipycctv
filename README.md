@@ -3,12 +3,16 @@
 카메라모듈 연결
 raspi-config 에서 카메라 항목 enable
 
+```
 $ sudo apt-get upgrade
 $ sudo apt-get update
 $ sudo apt-get install rpi-update && sudo rpi-update
 $ sudo reboot
+```
 
+```
 $ sudo modprobe bcm2835-v4l2
+```
 
 이 명령어로 /dev/video0 로 파이카메라를 인식
 
@@ -20,17 +24,17 @@ build-essential 패키지에는 C/C++ 컴파일러와 관련 라이브러리, ma
 
 cmake는 컴파일 옵션이나 빌드된 라이브러리에 포함시킬 OpenCV 모듈 설정등을 위해 필요합니다. 
 
- 
+``` 
 $ sudo apt-get install build-essential cmake
-
+```
 
 pkg-config는 프로그램 컴파일 및 링크시 필요한 라이브러리에 대한 정보를 메타파일(확장자가 .pc 인 파일)로부터 가져오는데 사용됩니다. 
 
 터미널에서 특정 라이브러리를 사용한 소스코드를 컴파일시 필요한 컴파일러 및 링커 플래그를 추가하는데 도움이 됩니다.
  
-
+```
 $ sudo apt-get install pkg-config
-
+```
 
 특정 포맷의 이미지 파일을 불러오거나 기록하기 위해 필요한 패키지들입니다.
 
@@ -40,22 +44,22 @@ $ sudo apt-get install libjpeg-dev libtiff5-dev libjasper-dev libpng12-dev
 
 
 특정 코덱의 비디오 파일을 읽어오거나 기록하기 위해 필요한 패키지들입니다. 
-
+```
 $ sudo apt-get install libavcodec-dev libavformat-dev libswscale-dev 
 $ sudo apt-get install libxvidcore-dev libx264-dev libxine2-dev
-
+```
 
 Video4Linux 패키지는 리눅스에서 실시간 비디오 캡처를 지원하기 위한 디바이스 드라이버와 API를 포함하고 있습니다. 
 
- 
+``` 
 $ sudo apt-get install libv4l-dev v4l-utils
-
+```
 
 GStreamer는 비디오 스트리밍을 위한 라이브러리입니다. 
 
- 
+```
 $ sudo apt-get install libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev 
-
+```
  
 
 
@@ -66,9 +70,9 @@ OpenCV에서는 highgui 모듈을 사용하여 자체적으로 윈도우 생성�
 여기서는 qt4를 지정해주었습니다. QImage와 Mat 간의 변환에는 영향을 주지 않습니다.
 
  
-
+```
 $ sudo apt-get install libqt4-dev 
-
+```
 
 그외 선택 가능한 패키지는 다음과 같습니다.
 
@@ -80,50 +84,51 @@ libqt5-dev
 
 OpenGL 지원하기 위해 필요한 라이브러리입니다.
 
-
+```
 $ sudo apt-get install mesa-utils libgl1-mesa-dri libqt4-opengl-dev 
-
+```
  
 OpenCV 최적화를 위해 사용되는 라이브러리들입니다.
 
  
-
+```
 $ sudo apt-get install libatlas-base-dev gfortran libeigen3-dev
-
+```
 
 python2.7-dev와 python3-dev 패키지는 OpenCV-Python 바인딩을 위해 필요한 패키지들입니다. 
 
 Numpy는 매트릭스 연산등을 빠르게 처리할 수 있어서 OpenCV에서 사용됩니다. 
 
-
+```
 $ sudo apt-get install python2.7-dev python3-dev
 $ sudo apt-get install python-numpy python3-numpy
-
+```
 
 대충 합쳐서
-
+```
 $ sudo apt-get install -y build-essential cmake pkg-config libjpeg-dev libtiff5-dev libjasper-dev libpng12-dev libavcodec-dev libavformat-dev libswscale-dev libxvidcore-dev libx264-dev libxine2-dev libv4l-dev v4l-utils libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev libqt4-dev libgtk2.0-dev libgtk-3-dev mesa-utils libgl1-mesa-dri libqt4-opengl-dev libatlas-base-dev gfortran libeigen3-dev python2.7-dev python3-dev python-numpy python3-numpy
-
-
+```
 
 # opencv 설치
 
 작업 디렉토리 생성 
-
+```
 $ mkdir opencv
 $ cd opencv
-
+```
 opencv 3.2.0 버젼 소스파일
- 
+```
 $ wget https://github.com/opencv/opencv/archive/3.2.0.zip
 $ wget https://github.com/opencv/opencv_contrib/archive/3.2.0.tar.gz
-
+```
 압축해제
-
+```
 $ unzip 3.2.0.zip 
 $ tar zxf 3.2.0.tar.gz 
-
+```
 빌드 디렉토리 생성
+
+```
 $ cd opencv-3.2.0/
 $ mkdir build_with_contrib
 $ cd build_with_contrib/
@@ -141,17 +146,17 @@ $ cmake -D CMAKE_BUILD_TYPE=RELEASE \
 -D OPENCV_EXTRA_MODULES_PATH=../../opencv_contrib-3.2.0/modules \
 -D BUILD_opencv_freetype=OFF \
 -D BUILD_EXAMPLES=OFF ..
-
+```
 
 빌드
-
+```
 $ make -j4
-
+```
 
 인스톨
-
+```
 $ sudo make install
-
+```
 
 
 참고사이트
