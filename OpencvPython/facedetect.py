@@ -20,8 +20,8 @@ def draw_rects(img, rects,color):
 		cv2.rectangle(img, (x1,y1), (x2,y2), color, 2)
 
 if __name__ == '__main__':
-	cascade_fn="/usr/local/share/OpenCV/haarcascades/haarcascade_frontalface_alt.xml"
-	nested_fn="/usr/local/share/OpenCV/haarcascades/haarcascade_eye.xml"
+	cascade_fn="haarcascade_frontalface_default.xml"
+	nested_fn="haarcascade_eye.xml"
 	cascade = cv2.CascadeClassifier(cascade_fn)
 	nested = cv2.CascadeClassifier(nested_fn)
 	cam = cv2.VideoCapture(0)

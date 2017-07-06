@@ -22,4 +22,4 @@ def do_stream():
 def do_route():
   return "<HTML><BODY><img src=\"stream\" width=320 height=240></BODY></HTML>"
 
-run(host='adscft.com', port=8008)
+run(host='192.168.0.200', port=8008)
