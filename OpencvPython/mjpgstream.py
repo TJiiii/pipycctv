@@ -1,7 +1,7 @@
 from bottle import route, run, get, response
 import cv2
 
-cam = cv2.VideoCaputure
+cam = cv2.VideoCapture
 cam.set(cv2.CAP_PROP_FRAME_WIDTH, 320)
 cam.set(cv2.CAP_PROP_FRAME_HEIGHT, 240)
 
