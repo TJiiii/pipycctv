@@ -199,56 +199,56 @@ $ wget http://www.linux-projects.org/listing/uv4l_repo/lrkey.asc && sudo apt-key
 ```
 
 /etc/apt/source.list 에 
-
+```
 deb http://www.linux-projects.org/listing/uv4l_repo/raspbian/ jessie main
-
+```
 라인을 추가
 
 소스를 추가했기 때문에 업데이트를 시켜준다
 
-'''
+```
 $ sudo apt-get update
-'''
+```
 
 uv4l 과 uv4l-raspicam 패키지를 설치
 
-'''
+```
 $ sudo apt-get install -y uv4l-raspicam
-'''
+```
 
 uv4l 에 대한 상세한 메뉴얼
 
-'''
+```
 $ man uv4l
 $ man uv4l-raspicam
-'''
+```
 
 시스템 시작마다 자동으로 관련모듈 적재를 위한 패키지 설치
 
-'''
+```
 $ sudo apt-get install uv4l-raspicam-extras
-'''
+```
 
 서비스 실행
 
-'''
+```
 $ sudo service uv4l_raspicam restart
-'''
+```
 
 uv4l 옵션
 
-'''
+```
 $ uv4l --help --driver raspicam --driver-help
-'''
+```
 
 http 스트리밍을 위한 패키지 설치
 
-'''
+```
 $ sudo apt-get install uv4l-server
 $ sudo apt-get install uv4l-uvc
 $ sudo apt-get install uv4l-xscreen
 $ sudo apt-get install uv4l-mjpegstream
-'''
+```
 
 다시 서비스를 재실행한후 
 로컬호스트의 8080 포트로 접속하면 스트림 영상 등 uv4l 의 다양한 기능을 확인할 수 있다
