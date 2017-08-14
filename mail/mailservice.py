@@ -17,12 +17,25 @@ def sendMail():
 	msg['From'] = sender
 	msg['To'] = ", ".join(receivers)
 	msg['Subject'] = Header(subject, 'utf8')
-	body = """\
-	this is test line.
-	line 2
-	line 3
+	body = """\ <h3>motion detect.</h3>
+	<p>[notice] this mail sended by pi.<br>
+	<strong>test.</strong></p>
 	"""
-	msg.attach(MIMEText(body, 'plain'))
+#	msg.attach(MIMEText(body, 'plain'))
+
+	attach = "/home/pi/test.jpg"
+	print("file:" + attach)
+
+	msg.attach(MIMEText(body, 'html', _charset="utf8"))
+	filename="/home/pi/test"
+	attachFilename = filename+".jpg"
+#		attachFilename = filename+".mp4"
+	attachment = open(attach, "rb")
+	part = MIMEBase('application', 'octet-stream', _charset="utf8")
+	part.set_payload((attachment).read())
+	encoders.encode_base64(part)
+	part.add_header('Content-Disposition', "attachment; filename= %s" % attachFilename)
+	msg.attach(part)
 
 	try:
 		server = smtplib.SMTP("smtp.gmail.com", 587)
@@ -34,35 +47,5 @@ def sendMail():
 		server.quit()
 	except smtplib.SMTPException:
 		print ("Error: Unable to send email.")
-
-
-#	attach = "/home/pi/Videos/mp4/"+filename+".mp4"
-#	print("file:" + attach)
-
-#	if (os.path.exists(attach)):
-#		msg.attach(MIMEText(body, 'html', _charset="utf8"))
-
-		#attachFilename = filename+".png"
-#		attachFilename = filename+".mp4"
-#		attachment = open(attach, "rb")
-#		part = MIMEBase('application', 'octet-stream', _charset="utf8")
-#		part.set_payload((attachment).read())
-#		encoders.encode_base64(part)
-#		part.add_header('Content-Disposition', "attachment; filename= %s" % attachFilename)
-#		msg.attach(part)
-
-#		try:
-#			server = smtplib.SMTP("smtp.gmail.com", 587)
-#			server.starttls() #secure connection
-#			server.login(sender, "ghost1004")
-
-#			server.sendmail(sender, receivers, msg.as_string())
-#			print("Successfully sent email.")
-#			server.quit()
-#		except smtplib.SMTPException:
-#			print ("Error: Unable to send email.")
-
-#	else:
-#		print ("no file.")
 
 sendMail()
